@@ -45,7 +45,8 @@ with tabs[0]:
     st.subheader("2. Attrition Rate Pie Chart")
     st.markdown("Shows percentage share of attrition.")
     pie_df = filtered_df["Attrition"].value_counts().reset_index()
-    fig = px.pie(pie_df, names="index", values="Attrition", title="Attrition Distribution")
+    pie_df.columns = ["Attrition", "Count"]
+    fig = px.pie(pie_df, names="Attrition", values="Count", title="Attrition Distribution")
     st.plotly_chart(fig, use_container_width=True)
 
     st.subheader("3. Correlation Heatmap")
